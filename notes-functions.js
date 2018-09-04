@@ -1,3 +1,4 @@
+'use strict';
 
 // Read existing notes from localStorage
 const getSavedNotes = () => {
