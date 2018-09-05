@@ -1,19 +1,28 @@
 <!DOCTYPE html>
 <html>
     <head>
-        
+        <link href="/styles/styles.css" rel="stylesheet">
     </head>
     <body>
-        <h1>Notes App</h1>
-        <h2>Take notes!</h2>
-        <input id="search-text" type="text" placeholder="Filter notes">
-        <select id="filter-by">
-            <option value="byEdited">Sort by last edited</option>
-            <option value="byCreated">Sort by recently created</option>
-            <option value="alphabetical">Sort alphabetically</option>
-        </select>
-        <div id="notes">
+        <header class="header">
+            <div class="container">
+                <h1 class="header__title">Notes App</h1>
+                <h2 class="header__subtitle">Take notes!</h2>
+            </div>
+        </header>
+        <div class="actions">
+            <div class="actions__container">
+                <input id="search-text" type="text" class="input" placeholder="Filter notes">
+                <select id="filter-by" class="dropdown">
+                    <option value="byEdited">Sort by last edited</option>
+                    <option value="byCreated">Sort by recently created</option>
+                    <option value="alphabetical">Sort alphabetically</option>
+                </select>
+            </div>
+        </div>
 
+
+        <div id="notes">
         </div>
         <button id="create-note">Create Note</button>
         <script src="/vendors/uuidv4.js"></script>
