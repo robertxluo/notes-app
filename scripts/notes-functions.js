@@ -31,33 +31,30 @@ const removeNote = (id) => {
 
 // Generate the DOM structure for a note
 const generateNoteDOM = (note) => {
-    const note_element = document.createElement("div");
-    const text_element = document.createElement("a");
-    const button = document.createElement("button");
-
-    // Setup the remove note button
-    button.textContent = "x";
-    note_element.appendChild(button);
-    button.addEventListener("click", () => {
-        removeNote(note.id);
-        saveNotes(notes);
-        renderNotes(notes, filters);
-    });
+    const note_element = document.createElement("a");
+    const text_element = document.createElement("p");
+    const status_element = document.createElement("p");
 
     // Setup the note title text
     if (note.title.length > 0)
     {
-        text_element.setAttribute("href", `/edit.html#${note.id}`);
         text_element.textContent = note.title;
     }
     else
     {
-        text_element.setAttribute("href", `/edit.html#${note.id}`);
         text_element.textContent = "Unnamed note";
     }
-
+    text_element.classList.add("list-item__title")
     note_element.appendChild(text_element);
 
+    // Setup the link
+    note_element.setAttribute("href", `/edit.html#${note.id}`);
+    note_element.classList.add("list-item");
+
+    // Setup the status message
+    status_element.textContent = generateLastEdited(note.updatedAt)
+    status_element.classList.add("list-item__subtitle")
+    note_element.appendChild(status_element)
     return note_element;
 };
 
