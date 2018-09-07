@@ -1,10 +1,34 @@
-import { getNotes, createNote, removeNote, updateNote } from "./notes.js";
-import { getFilters, setFilters } from "./filters.js";
+import { createNote } from "./notes.js";
+import { setFilters } from "./filters.js";
+import { renderNotes } from "./views.js";
 
-// updateNote("8ba2c788-2e4b-44d7-b499-1667d66521f0", {
-//     "title": "My note title",
-//     "body": "Woah this is cool!211"
-// })
-// console.log(getNotes());
-console.log(getFilters());
+// JSON.parse converts string to JS object
+// JSON.stringify converts JS object to string
 
+renderNotes();
+
+document.querySelector("#create-note").addEventListener("click", (e) => {
+    const note_id = createNote();
+    location.assign(`/edit.html#${note_id}`);
+});
+
+document.querySelector("#search-text").addEventListener("input", (e) => {
+    setFilters({
+        searchText: e.target.value
+    });
+    renderNotes();
+});
+
+document.querySelector("#filter-by").addEventListener("change", (e) => {
+    setFilters({
+        sortBy: e.target.value
+    });
+    renderNotes();
+});
+
+window.addEventListener("storage", (e) => {
+    if (e.key === "notes")
+    {
+        renderNotes();
+    }
+});
