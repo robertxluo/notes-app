@@ -1,3 +1,3 @@
-# notes-app
+# Notes App
 
-Working demo: https://same-basketball.surge.sh
+[Live demo](https://notes.robertluo.net/)
